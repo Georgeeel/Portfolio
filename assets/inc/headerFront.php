@@ -19,9 +19,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Mes site</a>
                     </li>
-                    
                 </ul>
-                </div>
+            </div>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
             </div>
         </nav>
     </header>

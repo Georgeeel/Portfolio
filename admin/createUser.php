@@ -20,6 +20,10 @@ include("../assets/inc/headerFront.php");
                 <input type="text" class="form-control mt-2" name="prenom" placeholder="Votre prénom">
                 <input type="email" class="form-control mt-2" name="email" placeholder="abc@yahoo.fr">
                 <input type="password" class="form-control mt-2" name="password" placeholder="Votre mot de passe">
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" value="" name="role"></input>
+                    <label class="form-check-label text-light" for="role">Rôle administrateur</label>
+                </div>
                 <button type="submit" class="btn btn-success mt-1 text-light fw-bold" name="soumettre">Valider</button>
             </form>
             <?php
@@ -40,7 +44,11 @@ include("../assets/inc/headerFront.php");
                 $options = ['cost' => 12];
                 $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT, $options);
                 // on dit que 1 est admin pour le role 
-                $role = 1;
+                if(isset($_POST["role"])){
+                    $role = 1;
+                }else{
+                    $role = 2;
+                }
                 // 2- préparation de l'écriture sql
                 $sql ="INSERT INTO user ( 
                                         nom,
