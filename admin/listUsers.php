@@ -7,7 +7,7 @@
     if($_SESSION["role"] == null || $_SESSION["role"] !=  1){
         // on envoie un message d'alerte
         $_SESSION["message"] = "Vous n'avez pas l'autorisation pour accéder à cette partie du site.";
-        header('Location: http://localhost/la_manu/sitePhpProcedural/index.php');
+        header('Location: http://localhost/sitePhpProcedural/index.php');
         exit;
     }
 
@@ -37,8 +37,9 @@
             </tr>
             
             <?php foreach($users as $user){
+                // a modifier le code
             echo '<tr>';
-            echo '<td scope="row">' .'<a href="updateUser.php?id_user='.$user["id_user"].'">'. $user["id_user"].'</a>' . '</td>';
+            echo '<td scope="row">' .'<a href="updateUser.php?id='.$user["id_user"].'">'. $user["id_user"].'</a>' . '</td>';
             echo '<td>' . $user["nom"] . '</td>';
             echo '<td>' . $user["prenom"] . '</td>';
             echo '<td>' . $user["email"] . '</td>';
@@ -47,7 +48,10 @@
             }else{
                 echo '<td>Utilisateur</td>';
             }
-            echo '<td>' .'<a class="btn btn-outline-light" href="editUser.php">Supprimer</a>'. '</td>';
+            echo '<td>' .'<a class="btn btn-outline-light" href="updateUser.php?id_user='.$user["id_user"].'">Modifier</a>'. " "
+                        . '<a class="btn btn-danger" href="deleteUser.php?id_user='.$user["id_user"].'">Supprimer</a>'." "
+                        .'<a class="btn btn-success" href="readUser.php?id_user='.$user["id_user"].'">Detail</a>'.
+                '</td>';
             echo '</tr>';
         }
         ?>
